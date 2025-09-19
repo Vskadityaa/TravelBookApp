@@ -76,6 +76,7 @@ class _BudgetTrackerPageState extends State<BudgetTrackerPage> {
                         "Set Your Budget",
                         style: TextStyle(
                           fontSize: 18,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -130,7 +131,7 @@ class _BudgetTrackerPageState extends State<BudgetTrackerPage> {
                           fontWeight: FontWeight.bold,
                           color: remainingBudget >= 0
                               ? Colors.greenAccent
-                              : Colors.redAccent,
+                              : const Color.fromARGB(255, 209, 195, 195),
                         ),
                       ),
                     ],
@@ -172,9 +173,9 @@ class _BudgetTrackerPageState extends State<BudgetTrackerPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(
                             255,
-                            255,
-                            0,
-                            43,
+                            107,
+                            188,
+                            121,
                           ),
                         ),
                         onPressed: addExpense,

@@ -123,7 +123,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: [
                   const SizedBox(height: 20),
-                  Image.asset("assets/logo.png", height: 70),
+                  Image.asset("assets/b.png", height: 70),
                   const SizedBox(height: 20),
                   const Text(
                     'Create Account',

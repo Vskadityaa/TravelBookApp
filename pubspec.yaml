@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  cached_network_image: ^3.3.1
   
 
   image_picker: ^1.1.2
@@ -38,4 +39,4 @@ flutter:
 
   assets:
     - assets/logo.png
-    - assets/b.png
+    - assets/

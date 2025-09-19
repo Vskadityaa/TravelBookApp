@@ -9,6 +9,7 @@ class DiscoverPage extends StatefulWidget {
 
 class _DiscoverPageState extends State<DiscoverPage> {
   String selectedCategory = 'All';
+  String searchQuery = '';
   final List<String> categories = ['All', 'Beach', 'Mountain', 'City'];
 
   final List<Map<String, dynamic>> destinations = [
@@ -50,10 +51,18 @@ class _DiscoverPageState extends State<DiscoverPage> {
   ];
 
   List<Map<String, dynamic>> get filteredDestinations {
-    if (selectedCategory == 'All') return destinations;
-    return destinations
-        .where((d) => d['category'] == selectedCategory)
-        .toList();
+    return destinations.where((d) {
+      final matchesCategory =
+          selectedCategory == 'All' || d['category'] == selectedCategory;
+      final matchesSearch =
+          d['name'].toString().toLowerCase().contains(
+            searchQuery.toLowerCase(),
+          ) ||
+          d['location'].toString().toLowerCase().contains(
+            searchQuery.toLowerCase(),
+          );
+      return matchesCategory && matchesSearch;
+    }).toList();
   }
 
   @override
@@ -81,15 +90,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
               ),
               onChanged: (query) {
                 setState(() {
-                  destinations.retainWhere(
-                    (dest) =>
-                        dest['name'].toString().toLowerCase().contains(
-                          query.toLowerCase(),
-                        ) ||
-                        dest['location'].toString().toLowerCase().contains(
-                          query.toLowerCase(),
-                        ),
-                  );
+                  searchQuery = query;
                 });
               },
             ),
@@ -136,7 +137,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   margin: const EdgeInsets.symmetric(vertical: 8),
                   child: InkWell(
                     onTap: () {
-                      // Optional: Navigate to destination details page
+                      // Navigate to details page if needed
                     },
                     child: Column(
                       children: [
@@ -144,8 +145,8 @@ class _DiscoverPageState extends State<DiscoverPage> {
                           borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(20),
                           ),
-                          child: Image.network(
-                            dest['image'],
+                          child: Image.asset(
+                            dest['image'], // ✅ Fixed here
                             height: 180,
                             width: double.infinity,
                             fit: BoxFit.cover,

@@ -13,7 +13,7 @@ import 'pages/journal_entry_page.dart';
 import 'pages/photo_gallery_page.dart';
 import 'pages/budget_tracker_page.dart';
 import 'pages/settings_page.dart';
-import 'pages/profile_page.dart';
+import 'pages/profile_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Travel Journal App',
+      title: 'TravelBook',
       theme: ThemeData.dark().copyWith(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         '/gallery': (context) => const PhotoGalleryPage(),
         '/budget': (context) => const BudgetTrackerPage(),
         '/settings': (context) => const SettingsPage(),
-        '/profile': (context) => const ProfilePage(),
+        '/profile': (context) => const ProfileScreen(),
       },
     );
   }
